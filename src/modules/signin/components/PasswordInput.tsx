@@ -7,7 +7,6 @@ export default function PasswordInput(){
   const [ isPasswordVisible, setPasswordVisible ] = useState(false);
 
   const handlePasswordVisibility = (): void => {
-    console.log(isPasswordVisible);
     if(isPasswordVisible === true){
       setPasswordVisible(false);
       return;
