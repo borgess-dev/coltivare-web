@@ -7,13 +7,14 @@ import '../styles/loginForm.sass';
 export default function LoginForm(){
 
   return (
-    <form className='login-form flex flex-col justify-center items-center w-fit p-8 gap-8'>
+    <form className='relative login-form flex flex-col justify-center items-center w-96 p-8 gap-8'>
+      <div className="absolute gradient-bg flex justify-center items-center h-44 w-full top-0"></div>
 
       <div className='flex flex-col justify-center items-center gap-8'>
         <Logo fill='gradient' size='logo64Regular'/>
         <div className='flex flex-col justify-center items-center gap-2'>
           <Title3>Olá! Seja Bem-Vindo!</Title3>
-          <Body2>Por favor, insira seus dados para prosseguir com o login.</Body2>
+          <Body2 align="center">Por favor, insira seus dados para fazer login.</Body2>
         </div>
       </div>
 
