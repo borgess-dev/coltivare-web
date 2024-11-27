@@ -1,7 +1,7 @@
 import './App.sass';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import Login from './modules/signin/pages/Login';
-import { Map } from './modules/core/map/pages/Map';
+import { Map } from './modules/map/pages/Map';
 
 function App() {
   return (
