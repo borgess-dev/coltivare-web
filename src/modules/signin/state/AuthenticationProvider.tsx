@@ -15,9 +15,11 @@ const AuthenticationProvider = ({ children }: AuthenticationProviderPropTypes) =
 
   const login = async (credentials: LoginRequest) => {
     const response = await coltivareApi.post<LoginResponse>('/v1/auth/signin', {
-      identifier: credentials.login,
+      login: credentials.login,
       password: credentials.password
     });
+
+    console.log(response.headers);
 
     if(response.data){
       setAccessToken(response.data.accessToken);
