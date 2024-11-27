@@ -5,8 +5,9 @@ const coltivareApi = axios.create({
 });
 
 coltivareApi.interceptors.request.use(config => {
-    config.headers['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
-    return config;
+  const accessToken = localStorage.getItem('accessToken');
+  config.headers['Authorization'] = `Bearer `;
+  return config;
 })
 
 export default coltivareApi;

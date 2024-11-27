@@ -1,8 +1,16 @@
 import { Input } from "@fluentui/react-components";
 import { EyeOffRegular, EyeRegular } from '@fluentui/react-icons';
 import { useState } from "react";
+import { FieldValues, UseFormRegister } from "react-hook-form";
+import { LoginRequest } from "../types/LoginRequest";
 
-export default function PasswordInput(){
+
+type InputProps<T extends FieldValues> = {
+  register: UseFormRegister<T>;
+};
+
+
+export default function PasswordInput({register}: InputProps<LoginRequest>){
 
   const [ isPasswordVisible, setPasswordVisible ] = useState(false);
 
@@ -17,12 +25,12 @@ export default function PasswordInput(){
 
   if(isPasswordVisible){
     return (
-      <Input className='w-full' placeholder='Senha' appearance='filled-darker' size='large' type='text' contentAfter={<EyeOffRegular onClick={() => handlePasswordVisibility()} />}></Input>
+      <Input {...register('password')} className='w-full' placeholder='Senha' appearance='filled-darker' size='large' type='text' contentAfter={<EyeOffRegular onClick={() => handlePasswordVisibility()} />}></Input>
     );
     
   }
 
   return (
-    <Input className='w-full' placeholder='Senha' appearance='filled-darker' size='large' type='password' contentAfter={<EyeRegular onClick={() => handlePasswordVisibility()} />}></Input>
+    <Input {...register('password')} className='w-full' placeholder='Senha' appearance='filled-darker' size='large' type='password' contentAfter={<EyeRegular onClick={() => handlePasswordVisibility()} />}></Input>
   );
 }
