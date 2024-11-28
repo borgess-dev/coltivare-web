@@ -1,10 +1,10 @@
-import { Sidebar } from "../../core/components/Sidebar"
+import { Sidebar } from '../../core/components/Sidebar/main';
 import '../styles/screen.sass';
 
-export function Map () {
+export function Map() {
   return (
     <>
-    <Sidebar />
+      <Sidebar />
     </>
-  )
+  );
 }
