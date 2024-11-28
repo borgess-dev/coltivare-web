@@ -1,5 +1,5 @@
 import { Body1, Body1Strong, Body2, Button, Field, FieldProps, Input, Title3 } from "@fluentui/react-components";
-import Logo from "../../core/components/Logo";
+import Logo from "../../core/components/Logo/Logo";
 import PasswordInput from "./PasswordInput";
 import { useForm } from 'react-hook-form';
 
