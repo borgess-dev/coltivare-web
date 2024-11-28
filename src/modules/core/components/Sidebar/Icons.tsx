@@ -30,5 +30,5 @@ export function SetIcon({ iconType }: SidebarPropTypes) {
   if (iconType === 'collectionsAdd') return <CollectionsAdd />;
   if (iconType === 'layer') return <Layer />;
   if (iconType === 'clipboardTaskListLtr') return <ClipboardTaskListLtr />;
-  <DataBarVertical/>
+  if (iconType === 'dataBarVertical') return <DataBarVertical />;
 }
