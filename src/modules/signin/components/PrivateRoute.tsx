@@ -4,7 +4,7 @@ import { useAuth } from '../state/AuthenticationProvider';
 const PrivateRoute = () => {
   const credentials = useAuth();
 
-  if (!credentials.accessToken)
+  if (!credentials?.accessToken)
     return <Navigate to="auth/signin" />;
   return <Outlet />;
 };

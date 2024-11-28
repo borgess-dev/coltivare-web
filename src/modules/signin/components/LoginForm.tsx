@@ -1,4 +1,4 @@
-import { Body1, Body1Strong, Body2, Button, Input, Title3 } from "@fluentui/react-components";
+import { Body1, Body1Strong, Body2, Button, Field, FieldProps, Input, Title3 } from "@fluentui/react-components";
 import Logo from "../../core/components/Logo";
 import PasswordInput from "./PasswordInput";
 import { useForm } from 'react-hook-form';
@@ -6,15 +6,40 @@ import { useForm } from 'react-hook-form';
 import '../styles/loginForm.sass';
 import { useAuth } from "../state/AuthenticationProvider";
 import { LoginRequest } from "../types/LoginRequest";
+import { useState } from "react";
 
 export default function LoginForm(){
 
   const authentication = useAuth();
   const { register, handleSubmit } = useForm<LoginRequest>();
+  const [ loginFieldState, setLoginFieldState ] = useState<FieldProps>({validationState: 'none'});
+  const [ passwordFieldState, setPasswordFieldState ] = useState<FieldProps>({validationState: 'none'});
 
   const onLoginSubmit = (data: LoginRequest) => {
-    console.log(data);
+
+    if(!data.login && !data.password){
+      setLoginFieldState({validationState: 'error'});
+      setPasswordFieldState({validationState: 'error'});
+      return;
+    }
+    else if(!data.login){
+      setLoginFieldState({validationState: 'error'});
+      return;
+    }
+    else if(!data.password){
+      setPasswordFieldState({validationState: 'error'});
+      return;
+    }
+
     authentication?.login(data);
+  };
+
+  const handleLoginInputFocus = () => {
+    setLoginFieldState({validationState: 'none'});
+  };
+
+  const handlePasswordInputFocus = () => {
+    setPasswordFieldState({validationState: 'none'});
   };
 
   return (
@@ -31,8 +56,10 @@ export default function LoginForm(){
       </div>
 
       <div className='flex flex-col w-full gap-8'>
-        <Input {...register('login')} className='w-full' placeholder='Nome de Usuário ou E-mail' appearance='filled-darker' size='large'></Input>
-        <PasswordInput register={register}></PasswordInput>
+        <Field validationState={loginFieldState.validationState} onFocus={handleLoginInputFocus}>
+          <Input {...register('login')} className='w-full' placeholder='Nome de Usuário ou E-mail' appearance='filled-darker' size='large'></Input>
+        </Field>
+        <PasswordInput register={register} inputValidationState={passwordFieldState} focusHandler={handlePasswordInputFocus}></PasswordInput>
       </div>
 
       <div className='flex flex-col w-full gap-4'>

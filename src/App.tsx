@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router';
 import Login from './modules/signin/pages/Login';
 import AuthenticationProvider from './modules/signin/state/AuthenticationProvider';
 import PrivateRoute from './modules/signin/components/PrivateRoute';
+import ProtectedRoute from './modules/signin/components/ProtectedRoute';
 
 function App() {
 
@@ -10,11 +11,11 @@ function App() {
     <BrowserRouter>
       <AuthenticationProvider>
         <Routes>
-          <Route path='auth'>
+          <Route path='auth' element={<ProtectedRoute/>}>
             <Route path='signin' element={<Login/>}></Route>
           </Route>
           <Route element={<PrivateRoute/>}>
-            <Route path="mapa" element={<h1 />} />
+            <Route path="map" element={<h1 />} />
           </Route>
         </Routes>
       </AuthenticationProvider>

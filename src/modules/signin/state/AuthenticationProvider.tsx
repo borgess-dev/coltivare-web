@@ -19,8 +19,6 @@ const AuthenticationProvider = ({ children }: AuthenticationProviderPropTypes) =
       password: credentials.password
     });
 
-    console.log(response.headers);
-
     if(response.data){
       setAccessToken(response.data.accessToken);
       setRefreshToken(response.data.refreshToken);
