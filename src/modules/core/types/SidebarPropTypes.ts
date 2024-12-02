@@ -1,8 +1,19 @@
-export type SidebarPropTypes = {
-  iconType?:
+export type IconPropTypes = {
+  iconType:
     | 'map'
-    | 'collectionsAdd'
-    | 'layer'
-    | 'clipboardTaskListLtr'
-    | 'dataBarVertical';
+    | 'registration'
+    | 'planning'
+    | 'serviceOrder'
+    | 'report'
+    | 'products'
+    | 'agricultural'
+    | 'productionStructure'
+    | 'rh'
+    | 'machines'
+    | 'agriculturalPlan'
+    | 'harvest';
+};
+
+export type TabPropTypes = {
+  tabType: 'map' | 'registration' | 'planning' | 'serviceOrder' | 'report';
 };
