@@ -36,6 +36,19 @@ const AuthenticationProvider = ({
     }
   };
 
+  const refresh = async(refreshTokenString: string) => {
+    const response = await coltivareApi.post<LoginResponse>('/v1/auth/refresh', {
+      refreshToken: refreshTokenString
+    });
+
+    if(response.data){
+      setAccessToken(response.data.accessToken);
+      setRefreshToken(response.data.refreshToken);
+      localStorage.setItem('accessToken', response.data.accessToken);
+      localStorage.setItem('refreshToken', response.data.refreshToken);
+    }
+  };
+
   const logout = () => {
     setAccessToken(null);
     setRefreshToken(null);
@@ -46,7 +59,7 @@ const AuthenticationProvider = ({
 
   return (
     <AuthenticationContext.Provider
-      value={{ accessToken, refreshToken, login, logout }}
+      value={{ accessToken, refreshToken, login, logout, refresh }}
     >
       {children}
     </AuthenticationContext.Provider>
