@@ -1,10 +1,9 @@
-import { Field, FieldProps, Input } from "@fluentui/react-components";
+import { Field, FieldProps, Input } from '@fluentui/react-components';
 import { EyeOffRegular, EyeRegular } from '@fluentui/react-icons';
-import { useState } from "react";
-import { FieldValues, UseFormRegister } from "react-hook-form";
-import { LoginRequest } from "../types/LoginRequest";
+import { useState } from 'react';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { LoginRequest } from '../types/LoginRequest';
 import React from 'react';
-
 
 type InputProps<T extends FieldValues> = {
   register: UseFormRegister<T>;
@@ -12,13 +11,15 @@ type InputProps<T extends FieldValues> = {
   focusHandler: () => void;
 };
 
-
-export default function PasswordInput({register, inputValidationState, focusHandler}: InputProps<LoginRequest>){
-
-  const [ isPasswordVisible, setPasswordVisible ] = useState(false);
+export default function PasswordInput({
+  register,
+  inputValidationState,
+  focusHandler,
+}: InputProps<LoginRequest>) {
+  const [isPasswordVisible, setPasswordVisible] = useState(false);
 
   const handlePasswordVisibility = (): void => {
-    if(isPasswordVisible === true){
+    if (isPasswordVisible === true) {
       console.log(inputValidationState.validationState);
       setPasswordVisible(false);
       return;
@@ -27,20 +28,41 @@ export default function PasswordInput({register, inputValidationState, focusHand
     setPasswordVisible(true);
   };
 
-  if(isPasswordVisible){
+  if (isPasswordVisible) {
     return (
-      <Field validationState={inputValidationState.validationState} onFocus={focusHandler}>
-        <Input {...register('password')} className='w-full' placeholder='Senha' appearance='filled-darker'
-          size='large' type='text' contentAfter={<EyeOffRegular onClick={() => handlePasswordVisibility()}/>}></Input>
+      <Field
+        validationState={inputValidationState.validationState}
+        onFocus={focusHandler}
+      >
+        <Input
+          {...register('password')}
+          className='w-full'
+          placeholder='Senha'
+          appearance='filled-darker'
+          size='large'
+          type='text'
+          contentAfter={
+            <EyeOffRegular onClick={() => handlePasswordVisibility()} />
+          }
+        ></Input>
       </Field>
     );
-    
   }
 
   return (
-    <Field validationState={inputValidationState.validationState} onFocus={focusHandler}>
-      <Input {...register('password')} className='w-full' placeholder='Senha' appearance='filled-darker'
-        size='large' type='password' contentAfter={<EyeRegular onClick={() => handlePasswordVisibility()}/>}></Input>
+    <Field
+      validationState={inputValidationState.validationState}
+      onFocus={focusHandler}
+    >
+      <Input
+        {...register('password')}
+        className='w-full'
+        placeholder='Senha'
+        appearance='filled-darker'
+        size='large'
+        type='password'
+        contentAfter={<EyeRegular onClick={() => handlePasswordVisibility()} />}
+      ></Input>
     </Field>
   );
 }
