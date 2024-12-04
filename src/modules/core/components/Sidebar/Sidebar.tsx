@@ -1,14 +1,22 @@
 import { TabList } from '@fluentui/react-components';
 import '../../styles/Sidebar.sass';
 import { RenderTabs } from './RenderTabs';
-import { BottomButtons } from './BottomButtons';
+import { BottomButtons } from './Buttons';
+import { SidebarPropTypes } from '../../types/SidebarPropTypes';
 
-export function Sidebar() {
+export function Sidebar({ dividerIsVisible }: SidebarPropTypes) {
   return (
     <div className='relative app-bar h-screen w-12 flex flex-col justify-between'>
-      <div className='shadow-light absolute w-2 h-screen right-0'></div>
+      {dividerIsVisible && (
+        <div className='shadow-light absolute w-2 h-screen right-0'></div>
+      )}
       <div className='tabs-stack flex align-center justify-center mt-2 '>
-        <TabList className='gap-2' defaultSelectedValue='mapa' vertical>
+        <TabList
+          selectTabOnFocus={true}
+          className='gap-2'
+          defaultSelectedValue='mapa'
+          vertical
+        >
           {<RenderTabs />}
         </TabList>
       </div>

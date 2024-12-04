@@ -10,12 +10,28 @@ import {
 } from '@fluentui/react-components';
 import { SetIcon } from './Icons';
 
+import { useNavigate } from 'react-router';
+
 const ProductionStructureSubmenu = () => {
+  const Navigate = useNavigate();
+  const HandlePropertiesClick = () => {
+    return Navigate('/registrations/production/properties');
+  };
+  const HandleFieldsClick = () => {
+    return Navigate('/registrations/production/fields');
+  };
+  const HandleStorageClick = () => {
+    return Navigate('/registrations/production/storages');
+  };
+
   return (
     <>
       <Menu>
         <MenuSplitGroup>
-          <MenuItem icon={<SetIcon iconType='productionStructure' />}>
+          <MenuItem
+            onClick={HandlePropertiesClick}
+            icon={<SetIcon iconType='productionStructure' />}
+          >
             Estrutura de Produção
           </MenuItem>
           <MenuTrigger disableButtonEnhancement>
@@ -25,9 +41,9 @@ const ProductionStructureSubmenu = () => {
 
         <MenuPopover>
           <MenuList>
-            <MenuItem>Propriedades</MenuItem>
-            <MenuItem>Áreas</MenuItem>
-            <MenuItem>Ármazem</MenuItem>
+            <MenuItem onClick={HandlePropertiesClick}>Propriedades</MenuItem>
+            <MenuItem onClick={HandleFieldsClick}>Áreas</MenuItem>
+            <MenuItem onClick={HandleStorageClick}>Ármazem</MenuItem>
           </MenuList>
         </MenuPopover>
       </Menu>
@@ -36,11 +52,23 @@ const ProductionStructureSubmenu = () => {
 };
 
 const WorkforceSubmenu = () => {
+  const Navigate = useNavigate();
+  const HandleEmployeesClick = () => {
+    return Navigate('/registrations/labor/employees');
+  };
+  const HandleTeamsClick = () => {
+    return Navigate('/registrations/labor/teams');
+  };
   return (
     <>
       <Menu>
         <MenuSplitGroup>
-          <MenuItem icon={<SetIcon iconType='rh' />}>Mão de Obra</MenuItem>
+          <MenuItem
+            onClick={HandleEmployeesClick}
+            icon={<SetIcon iconType='rh' />}
+          >
+            Mão de Obra
+          </MenuItem>
           <MenuTrigger disableButtonEnhancement>
             <MenuItem aria-label='Abrir Cadastros de estruturas de produção' />
           </MenuTrigger>
@@ -48,8 +76,8 @@ const WorkforceSubmenu = () => {
 
         <MenuPopover>
           <MenuList>
-            <MenuItem>Funcionários</MenuItem>
-            <MenuItem>Equipes</MenuItem>
+            <MenuItem onClick={HandleEmployeesClick}>Funcionários</MenuItem>
+            <MenuItem onClick={HandleTeamsClick}>Equipes</MenuItem>
           </MenuList>
         </MenuPopover>
       </Menu>
@@ -58,11 +86,24 @@ const WorkforceSubmenu = () => {
 };
 
 const AgriculturalSubMenu = () => {
+  const Navigate = useNavigate();
+  const HandleCropsClick = () => {
+    return Navigate('/registrations/agriculture/crops');
+  };
+  const HandleActivityClassClick = () => {
+    return Navigate('/registrations/agriculture/activity-classifications');
+  };
+  const HandleActivitiesClick = () => {
+    return Navigate('/registrations/agriculture/activities');
+  };
   return (
     <>
       <Menu>
         <MenuSplitGroup>
-          <MenuItem icon={<SetIcon iconType='agricultural' />}>
+          <MenuItem
+            onClick={HandleCropsClick}
+            icon={<SetIcon iconType='agricultural' />}
+          >
             Agrícolas
           </MenuItem>
           <MenuTrigger disableButtonEnhancement>
@@ -72,9 +113,13 @@ const AgriculturalSubMenu = () => {
 
         <MenuPopover>
           <MenuList>
-            <MenuItem>Cultivares</MenuItem>
-            <MenuItem>Classificação de Atividades</MenuItem>
-            <MenuItem>Atividades Agrícolas</MenuItem>
+            <MenuItem onClick={HandleCropsClick}>Cultivares</MenuItem>
+            <MenuItem onClick={HandleActivityClassClick}>
+              Classificação de Atividades
+            </MenuItem>
+            <MenuItem onClick={HandleActivitiesClick}>
+              Atividades Agrícolas
+            </MenuItem>
           </MenuList>
         </MenuPopover>
       </Menu>
@@ -82,12 +127,25 @@ const AgriculturalSubMenu = () => {
   );
 };
 const MachinesSubMenu = () => {
+  const Navigate = useNavigate();
+  const HandleMachinesclassClick = () => {
+    Navigate('/registrations/equipment/machine-classifications');
+  };
+  const HandleMachinesClick = () => {
+    Navigate('/registrations/equipment/machines');
+  };
+  const HandleSpraynozzlesClick = () => {
+    Navigate('/registrations/equipment/spray-nozzles');
+  };
   return (
     <>
       <Menu>
         <MenuSplitGroup>
-          <MenuItem icon={<SetIcon iconType='machines' />}>
-            Máquinas e Implementos
+          <MenuItem
+            onClick={HandleMachinesClick}
+            icon={<SetIcon iconType='machines' />}
+          >
+            Equipamentos
           </MenuItem>
           <MenuTrigger disableButtonEnhancement>
             <MenuItem aria-label='Abrir Cadastros de Máquinas' />
@@ -96,9 +154,13 @@ const MachinesSubMenu = () => {
 
         <MenuPopover>
           <MenuList>
-            <MenuItem>Classificação de Máquinas</MenuItem>
-            <MenuItem>Máquinas</MenuItem>
-            <MenuItem>Bicos Pulverizadores</MenuItem>
+            <MenuItem onClick={HandleMachinesclassClick}>
+              Classificação de Máquinas
+            </MenuItem>
+            <MenuItem onClick={HandleMachinesClick}>Máquinas</MenuItem>
+            <MenuItem onClick={HandleSpraynozzlesClick}>
+              Bicos Pulverizadores
+            </MenuItem>
           </MenuList>
         </MenuPopover>
       </Menu>
@@ -106,12 +168,22 @@ const MachinesSubMenu = () => {
   );
 };
 const AgriculturalProductsSubmenu = () => {
+  const Navigate = useNavigate();
+  const HandleProductclassClick = () => {
+    return Navigate('/registrations/products/product-classifcations');
+  };
+  const HandleProductsClick = () => {
+    return Navigate('/registrations/products/products');
+  };
   return (
     <>
       <Menu>
         <MenuSplitGroup>
-          <MenuItem icon={<SetIcon iconType='products' />}>
-            Insumos Agrícolas
+          <MenuItem
+            onClick={HandleProductclassClick}
+            icon={<SetIcon iconType='products' />}
+          >
+            Produtos Agrícolas
           </MenuItem>
           <MenuTrigger disableButtonEnhancement>
             <MenuItem aria-label='Abrir Cadastros de Insumos' />
@@ -120,8 +192,10 @@ const AgriculturalProductsSubmenu = () => {
 
         <MenuPopover>
           <MenuList>
-            <MenuItem>Classificação de Insumos</MenuItem>
-            <MenuItem>Insumos</MenuItem>
+            <MenuItem onClick={HandleProductclassClick}>
+              Classificação de Insumos
+            </MenuItem>
+            <MenuItem onClick={HandleProductsClick}>Produtos</MenuItem>
           </MenuList>
         </MenuPopover>
       </Menu>

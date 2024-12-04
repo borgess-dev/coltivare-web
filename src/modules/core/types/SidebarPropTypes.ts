@@ -17,3 +17,6 @@ export type IconPropTypes = {
 export type TabPropTypes = {
   tabType: 'map' | 'registration' | 'planning' | 'serviceOrder' | 'report';
 };
+export type SidebarPropTypes = {
+  dividerIsVisible: boolean;
+};

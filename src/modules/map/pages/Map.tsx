@@ -4,7 +4,7 @@ import '../styles/screen.sass';
 export function Map() {
   return (
     <>
-      <Sidebar />
+      <Sidebar dividerIsVisible />
     </>
   );
 }
