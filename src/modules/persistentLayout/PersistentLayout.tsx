@@ -5,7 +5,7 @@ export function PersistentLayout() {
   return (
     <>
       <div>
-        <Sidebar dividerIsVisible={true} />
+        <Sidebar dividerIsVisible />
       </div>
       <Outlet />
     </>

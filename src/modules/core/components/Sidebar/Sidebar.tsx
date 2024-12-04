@@ -12,7 +12,8 @@ export function Sidebar({ dividerIsVisible }: SidebarPropTypes) {
       )}
       <div className='tabs-stack flex align-center justify-center mt-2 '>
         <TabList
-          selectTabOnFocus={true}
+          reserveSelectedTabSpace={true}
+          selectTabOnFocus={false}
           className='gap-2'
           defaultSelectedValue='mapa'
           vertical

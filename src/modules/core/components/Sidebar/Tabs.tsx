@@ -28,6 +28,7 @@ const registrationTab = () => {
         relationship='label'
       >
         <Tab
+          draggable={false}
           className='h-10'
           icon={<SetIcon iconType='registration' />}
           value='cadastros'

@@ -19,6 +19,8 @@ import { SprayNozzlesPage } from './modules/registrations/pages/equipments/Spray
 import { ProductsPage } from './modules/registrations/pages/agriculturalProducts/Products';
 import { ProductClassificationsPage } from './modules/registrations/pages/agriculturalProducts/ProductClassification';
 import { PersistentLayout } from './modules/persistentLayout/PersistentLayout';
+import { AgronomicPlanPage } from './modules/planning/pages/AgronomicPlan';
+import { HarvestPage } from './modules/planning/pages/Harvest';
 
 function App() {
   return (
@@ -68,6 +70,13 @@ function App() {
                 ></Route>
                 <Route path='products' element={<ProductsPage />}></Route>
               </Route>
+            </Route>
+            <Route path='planning'>
+              <Route path='harvest' element={<HarvestPage />}></Route>
+              <Route
+                path='agronomic-plan'
+                element={<AgronomicPlanPage />}
+              ></Route>
             </Route>
           </Route>
         </Routes>

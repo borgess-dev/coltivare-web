@@ -8,12 +8,20 @@ import {
   Tooltip,
 } from '@fluentui/react-components';
 import { SetIcon } from './Icons';
+import { useNavigate } from 'react-router';
 
 const AgriculturalPlanSubmenu = () => {
+  const Navigate = useNavigate();
+  const HandleAgronomicplanClick = () => {
+    return Navigate('/planning/agronomic-plan');
+  };
   return (
     <>
       <Menu>
-        <MenuItem icon={<SetIcon iconType='agriculturalPlan' />}>
+        <MenuItem
+          onClick={HandleAgronomicplanClick}
+          icon={<SetIcon iconType='agriculturalPlan' />}
+        >
           Plano Agronômico
         </MenuItem>
         <MenuTrigger disableButtonEnhancement>
@@ -24,10 +32,19 @@ const AgriculturalPlanSubmenu = () => {
   );
 };
 const HarvestSubmenu = () => {
+  const Navigate = useNavigate();
+  const HandleHarvestClick = () => {
+    return Navigate('/planning/harvest');
+  };
   return (
     <>
       <Menu>
-        <MenuItem icon={<SetIcon iconType='harvest' />}>Safra</MenuItem>
+        <MenuItem
+          onClick={HandleHarvestClick}
+          icon={<SetIcon iconType='harvest' />}
+        >
+          Safra
+        </MenuItem>
         <MenuTrigger disableButtonEnhancement>
           <MenuItem aria-label='Abrir Safra' />
         </MenuTrigger>

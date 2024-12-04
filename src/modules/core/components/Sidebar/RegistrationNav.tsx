@@ -217,7 +217,7 @@ export function RegistrationNav() {
           >
             <Tab
               className='h-10'
-              icon={<SetIcon iconType='productionStructure' />}
+              icon={<SetIcon iconType='registration' />}
               value='cadastros'
             />
           </Tooltip>
