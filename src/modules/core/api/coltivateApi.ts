@@ -1,4 +1,5 @@
 import axios from 'axios';
+import * as jose from 'jose';
 
 const coltivareApi = axios.create({
   baseURL: 'http://localhost:8080/api',
@@ -15,8 +16,9 @@ const coltivareApi = axios.create({
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 coltivareApi.interceptors.request.use((config) => {
-  const accessToken = localStorage.getItem('accessToken');
-  const tokenString = accessToken ? `Bearer ${accessToken}` : '';
+  const accessToken = JSON.stringify(localStorage.getItem('accessToken'));
+  const isAccessTokenExpired = jose.decodeJwt(accessToken).exp < (new Date().getTime() + 1) / 1000;
+  const tokenString = !isAccessTokenExpired ? `Bearer ${accessToken}` : '';
   config.headers['Authorization'] = tokenString;
   return config;
 });

@@ -7,5 +7,5 @@ export type AuthenticationContextType = {
   login: (credentials: LoginRequest) => Promise<void>;
   logout: () => void;
   // eslint-disable-next-line no-unused-vars
-  refresh: (refreshTokenString: string) => Promise<void>;
+  refresh: () => Promise<void>;
 };

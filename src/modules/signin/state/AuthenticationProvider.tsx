@@ -14,10 +14,10 @@ const AuthenticationProvider = ({
   children,
 }: AuthenticationProviderPropTypes) => {
   const [accessToken, setAccessToken] = useState(
-    localStorage.getItem('accessToken')
+    JSON.stringify(localStorage.getItem('accessToken'))
   );
   const [refreshToken, setRefreshToken] = useState(
-    localStorage.getItem('refreshToken')
+    JSON.stringify(localStorage.getItem('refreshToken'))
   );
   const navigate = useNavigate();
 
@@ -36,7 +36,8 @@ const AuthenticationProvider = ({
     }
   };
 
-  const refresh = async(refreshTokenString: string) => {
+  const refresh = async() => {
+    const refreshTokenString = JSON.stringify(localStorage.getItem('refreshToken'));
     const response = await coltivareApi.post<LoginResponse>('/v1/auth/refresh', {
       refreshToken: refreshTokenString
     });
@@ -50,8 +51,8 @@ const AuthenticationProvider = ({
   };
 
   const logout = () => {
-    setAccessToken(null);
-    setRefreshToken(null);
+    setAccessToken('');
+    setRefreshToken('');
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     navigate('auth/signin');
