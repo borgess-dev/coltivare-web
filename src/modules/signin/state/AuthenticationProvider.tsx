@@ -36,7 +36,8 @@ const AuthenticationProvider = ({
     }
   };
 
-  const logout = () => {
+  const logout = async () => {
+    await coltivareApi.delete(`/v1/auth/logout/${refreshToken}`);
     setAccessToken(null);
     setRefreshToken(null);
     localStorage.removeItem('accessToken');
