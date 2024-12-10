@@ -12,6 +12,7 @@ import {
   Settings20Filled,
   Settings20Regular,
 } from '@fluentui/react-icons';
+import { useAuth } from '../../../signin/state/AuthenticationProvider';
 
 const useStyles = makeStyles({
   button: {
@@ -29,7 +30,14 @@ const SignOut = bundleIcon(SignOutFilled, SignOutRegular);
 const Settings = bundleIcon(Settings20Filled, Settings20Regular);
 
 export function BottomButtons(props: Partial<TooltipProps>) {
+  
   const styles = useStyles();
+  const authentication = useAuth();
+
+  const handleLogout = () => {
+    authentication?.logout();
+  };
+
   return (
     <>
       <Tooltip
@@ -57,6 +65,7 @@ export function BottomButtons(props: Partial<TooltipProps>) {
           className={styles.button}
           size='large'
           appearance='transparent'
+          onClick={handleLogout}
           icon={<SignOut />}
         ></Button>
       </Tooltip>
